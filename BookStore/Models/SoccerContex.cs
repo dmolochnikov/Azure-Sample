@@ -10,5 +10,10 @@ namespace BookStore.Models
     {
         public DbSet<Player> Players { get; set; }
         public DbSet<Team> Teams { get; set; }
+
+        public SoccerContex() : base("BookContext")
+        {
+
+        }
     }
 }
