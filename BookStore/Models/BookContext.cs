@@ -13,7 +13,7 @@ namespace BookStore.Models
 
         public BookContext(): base("BookContext")
         {
-
+            Database.SetInitializer<BookContext>(null);
         }
     }
 }

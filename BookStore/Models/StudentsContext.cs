@@ -11,8 +11,10 @@ namespace BookStore.Models
         public DbSet<Student> Students { get; set; }
         public DbSet<Course> Courses { get; set; }
 
-        public StudentsContext(): base("BookContext")
-        { }
+        public StudentsContext() : base("BookContext")
+        {
+            Database.SetInitializer<StudentsContext>(null);
+        }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
