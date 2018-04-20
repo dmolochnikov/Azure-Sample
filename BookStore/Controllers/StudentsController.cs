@@ -11,7 +11,7 @@ namespace BookStore.Controllers
     public class StudentsController : Controller
     {
 
-        private StudentsContext db = new StudentsContext();
+        private BookContext db = new BookContext();
         // GET: Students
         public ActionResult Index()
         {

@@ -10,7 +10,7 @@ namespace BookStore.Controllers
 {
     public class SoccerController : Controller
     {
-        SoccerContex db = new SoccerContex();
+        BookContext db = new BookContext();
 
 		protected override void Dispose(bool disposing)
 		{

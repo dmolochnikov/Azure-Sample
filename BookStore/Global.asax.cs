@@ -1,30 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.IO;
-using System.Linq;
 using System.Web;
-using System.Web.Hosting;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using BookStore.Models;
 
 namespace BookStore
 {
-	public class MvcApplication : System.Web.HttpApplication
-	{
-		protected void Application_Start()
-		{
-			Database.SetInitializer(new BookDbInitializer());
-			Database.SetInitializer(new CourseDbInitializer());
+    public class MvcApplication : HttpApplication
+    {
+        protected void Application_Start()
+        {
+            AreaRegistration.RegisterAllAreas();
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
+        }
 
-			AreaRegistration.RegisterAllAreas();
-			FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-			RouteConfig.RegisterRoutes(RouteTable.Routes);
-			BundleConfig.RegisterBundles(BundleTable.Bundles);
-
-            Logger.Info("App started");
-		}
-	}
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            Exception error = Server.GetLastError();
+            Logger.Error("ZZZ! An error was detected on application level", error);
+        }
+    }
 }

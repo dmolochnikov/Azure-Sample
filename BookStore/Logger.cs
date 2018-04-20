@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Reflection;
+using log4net;
 
 namespace BookStore
 {
     public static class Logger
     {
-        private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         public static void Info(string message)
         {
@@ -17,6 +16,11 @@ namespace BookStore
         public static void Error(string message, Exception ex)
         {
             Log.Error(message, ex);
+        }
+
+        public static void Error(string message)
+        {
+            Log.Error(message);
         }
     }
 }
