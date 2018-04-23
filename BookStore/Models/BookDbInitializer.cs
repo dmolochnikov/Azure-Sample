@@ -44,6 +44,22 @@ namespace BookStore.Models
             context.Courses.Add(c2);
             context.Courses.Add(c3);
 
+            var mu = new Team { Coach = "Jose Mourinho", Name = "Manchester United" };
+            var liverpool = new Team { Coach = "Jurgen Klopp", Name = "Liverpool" };
+
+            context.Teams.Add(mu);
+            context.Teams.Add(liverpool);
+
+            var deGea = new Player { Name = "Davi De Gea", Age = 28, Position = "Goalkeeper", Team = mu };
+            var mata = new Player { Name = "Huan Mata", Age = 28, Position = "Midfielder", Team = mu };
+            var virgil = new Player { Name = "Virgil van Dijk", Age = 28, Position = "Defender", Team = liverpool };
+            var reberto = new Player { Name = "Roberto Firmino", Age = 28, Position = "Forward", Team = liverpool };
+
+            context.Players.Add(deGea);
+            context.Players.Add(mata);
+            context.Players.Add(virgil);
+            context.Players.Add(reberto);
+
             base.Seed(context);
         }
     }

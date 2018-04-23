@@ -6,7 +6,7 @@
 
 <h2>Новая книга</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Create", "Home", FormMethod.Post))
 {
     @Html.LabelFor(model => model.Name, "Название книги")
     <br />

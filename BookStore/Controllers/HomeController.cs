@@ -29,20 +29,16 @@ namespace BookStore.Controllers
         }
 
         [HttpGet]
-        public ActionResult BookView(int? id)
+        public ActionResult BookView(int id)
         {
-            if (id == null)
-            {
-                return HttpNotFound();
-            }
-            Book book = db.Books.Find(id);
+            Book book = db.Books.FirstOrDefault(b => b.Id == id);
             if (book != null)
             {
                 return View(book);
             }
+
             return HttpNotFound();
         }
-
 
         [HttpGet]
         public ActionResult EditBook(int? id)
@@ -109,6 +105,7 @@ namespace BookStore.Controllers
             }
             return View(b);
         }
+
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {

@@ -8,22 +8,30 @@
 <h3>Распродажа книг</h3>
 <table class="table table-responsive table-bordered table-hover">
     <thead>
-        <tr>
-            <th>Название книги</th>
-            <th>Автор</th>
-            <th>Цена</th>
-            <th></th>
-        </tr>
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Price</th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
     </thead>
     <tbody>
-        @foreach (BookStore.Models.Book b in Model)
-        {
-            <tr>
-                <td>@b.Name</td>
-                <td>@b.Author</td>
-                <td>@b.Price</td>
-                <td><a href="@Url.Action("Buy",new {id=b.Id})">Купить</a></td>
-            </tr>
-        }
+    @foreach (BookStore.Models.Book b in Model)
+    {
+        <tr>
+            <td>@b.Name</td>
+            <td>@b.Author</td>
+            <td>@b.Price</td>
+            <td>@Html.ActionLink("Details", "BookView", new { id = b.Id })</td>
+            <td>@Html.ActionLink("Edit", "EditBook", new { id = b.Id })</td>
+            <td>@Html.ActionLink("Delete", "Delete", new { id = b.Id })</td>
+            <td><a href="@Url.Action("Buy",new {id=b.Id})">Buy</a></td>
+        </tr>
+    }
     </tbody>            
 </table>
+<p>
+    @Html.ActionLink("Add book", "Create")
+</p>
