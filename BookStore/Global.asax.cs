@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Microsoft.ApplicationInsights;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
 
@@ -34,6 +36,9 @@ namespace BookStore
         {
             Exception error = Server.GetLastError();
             Logger.Error("ZZZ! An error was detected on application level", error);
+
+            var ai = new TelemetryClient();
+            ai.TrackException(error, new Dictionary<string, string> { {"SOURCE", "Captured from TelemetryClient" } });
         }
     }
 }

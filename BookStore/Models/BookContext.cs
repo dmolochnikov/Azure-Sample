@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using Microsoft.ApplicationInsights;
 
 namespace BookStore.Models
 {
@@ -18,6 +19,9 @@ namespace BookStore.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            var ai = new TelemetryClient();
+            ai.TrackEvent("OnModelCreating");
+
             modelBuilder.Entity<Course>().HasMany(c => c.Students)
                 .WithMany(s => s.Courses)
                 .Map(t => t.MapLeftKey("CourseId")
