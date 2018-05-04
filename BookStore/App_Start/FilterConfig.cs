@@ -1,5 +1,4 @@
 ﻿using System.Web.Mvc;
-using BookStore.App_Start;
 
 namespace BookStore
 {
