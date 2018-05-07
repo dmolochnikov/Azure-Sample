@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BookStore</name>
+    </assembly>
+    <members>
+        <member name="T:BookStore.Controllers.PaginationController">
+            <inheritdoc />
+            <summary>
+            Web API controller to show pagination of a list
+            </summary>
+        </member>
+        <member name="M:BookStore.Controllers.PaginationController.#ctor">
+            <inheritdoc />
+            <summary>
+            Controller constructor (creates hard-coded list of phones)
+            </summary>
+        </member>
+        <member name="M:BookStore.Controllers.PaginationController.GetPhones(System.Int32)">
+            <summary>
+            Get first N phones
+            </summary>
+            <remarks>
+            A list of phones with N elements
+            </remarks>
+            <param name="page">number of page to display</param>
+            <returns>a page with phones</returns>
+        </member>
+        <member name="T:BookStore.Models.Pagination.IndexViewModel">
+            <summary>
+            Model for Index view
+            </summary>
+        </member>
+        <member name="P:BookStore.Models.Pagination.IndexViewModel.Phones">
+            <summary>
+            A collection of phones to show on Index page
+            </summary>
+        </member>
+        <member name="P:BookStore.Models.Pagination.IndexViewModel.PageInfo">
+            <summary>
+            Page data
+            </summary>
+        </member>
+        <member name="T:BookStore.Models.Pagination.PageInfo">
+            <summary>
+            Class that represents information about current page
+            </summary>
+        </member>
+        <member name="P:BookStore.Models.Pagination.PageInfo.PageNumber">
+            <summary>
+            Number of current page
+            </summary>
+        </member>
+        <member name="P:BookStore.Models.Pagination.PageInfo.PageSize">
+            <summary>
+            The size of the page (number of objects on the page)
+            </summary>
+        </member>
+        <member name="P:BookStore.Models.Pagination.PageInfo.TotalItems">
+            <summary>
+            Total number of objects
+            </summary>
+        </member>
+        <member name="P:BookStore.Models.Pagination.PageInfo.TotalPages">
+            <summary>
+            Total number of pages
+            </summary>
+        </member>
+        <member name="T:BookStore.Models.Pagination.Phone">
+            <summary>
+            Phone entity
+            </summary>
+        </member>
+        <member name="P:BookStore.Models.Pagination.Phone.Id">
+            <summary>
+            Phone Identifier
+            </summary>
+        </member>
+        <member name="P:BookStore.Models.Pagination.Phone.Model">
+            <summary>
+            Phone Model
+            </summary>
+        </member>
+        <member name="P:BookStore.Models.Pagination.Phone.Producer">
+            <summary>
+            Phone Manufacturer
+            </summary>
+        </member>
+    </members>
+</doc>
