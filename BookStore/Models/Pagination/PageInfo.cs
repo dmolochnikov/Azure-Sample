@@ -2,12 +2,29 @@
 
 namespace BookStore.Models.Pagination
 {
+    /// <summary>
+    /// Class that represents information about current page
+    /// </summary>
     public class PageInfo
     {
-        public int PageNumber { get; set; } // номер текущей страницы
-        public int PageSize { get; set; } // кол-во объектов на странице
-        public int TotalItems { get; set; } // всего объектов
-        // всего страниц
+        /// <summary>
+        /// Number of current page
+        /// </summary>
+        public int PageNumber { get; set; }
+        
+        /// <summary>
+        /// The size of the page (number of objects on the page)
+        /// </summary>
+        public int PageSize { get; set; }
+        
+        /// <summary>
+        /// Total number of objects
+        /// </summary>
+        public int TotalItems { get; set; }
+        
+        /// <summary>
+        /// Total number of pages
+        /// </summary>
         public int TotalPages => (int) Math.Ceiling((decimal) TotalItems / PageSize);
     }
 }

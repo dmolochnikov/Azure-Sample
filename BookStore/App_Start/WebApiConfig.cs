@@ -9,7 +9,7 @@ namespace BookStore
             configuration.MapHttpAttributeRoutes();
 
             configuration.Routes.MapHttpRoute("API Default", "api/{controller}/{id}",
-                new { controller = "Pagination", action = "Index", id = RouteParameter.Optional });
+                new { controller = "Pagination", action = "GetPhones", id = RouteParameter.Optional });
         }
     }
 }

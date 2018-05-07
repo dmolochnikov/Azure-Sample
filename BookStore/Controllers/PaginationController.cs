@@ -1,15 +1,24 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Description;
 using BookStore.Models.Pagination;
 
 namespace BookStore.Controllers
 {
+    /// <inheritdoc />
+    /// <summary>
+    /// Web API controller to show pagination of a list
+    /// </summary>
     public class PaginationController : ApiController
     {
         private readonly List<Phone> _phones;
         private const int PageSize = 3;
 
+        /// <inheritdoc />
+        /// <summary>
+        /// Controller constructor (creates hard-coded list of phones)
+        /// </summary>
         public PaginationController()
         {
             _phones = new List<Phone>
@@ -27,8 +36,17 @@ namespace BookStore.Controllers
             };
         }
 
-        [AcceptVerbs("GET")]
-        public IHttpActionResult Index(int page = 1)
+        /// <summary>
+        /// Get first N phones
+        /// </summary>
+        /// <remarks>
+        /// A list of phones with N elements
+        /// </remarks>
+        /// <param name="page">number of page to display</param>
+        /// <returns>a page with phones</returns>
+        // [Route("api/phones")]
+        [ResponseType(typeof(IndexViewModel))]
+        public IHttpActionResult GetPhones(int page = 1)
         {
             IEnumerable<Phone> phonesPerPages = _phones.Skip((page - 1) * PageSize).Take(PageSize);
             PageInfo pageInfo = new PageInfo {PageNumber = page, PageSize = PageSize, TotalItems = _phones.Count};
