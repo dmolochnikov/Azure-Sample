@@ -1,8 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web.Http;
 using System.Web.Http.Description;
 using BookStore.Models.Pagination;
+using Swashbuckle.Examples;
+using Swashbuckle.Swagger.Annotations;
 
 namespace BookStore.Controllers
 {
@@ -45,7 +48,9 @@ namespace BookStore.Controllers
         /// <param name="page">number of page to display</param>
         /// <returns>a page with phones</returns>
         // [Route("api/phones")]
-        [ResponseType(typeof(IndexViewModel))]
+        // [ResponseType(typeof(IndexViewModel))]
+        [SwaggerResponseHeader(HttpStatusCode.OK, "MyCustomHeader", "string", "A collection of mobile phones")]
+        [SwaggerResponse(HttpStatusCode.OK, "Success!", typeof(IndexViewModel))]
         public IHttpActionResult GetPhones(int page = 1)
         {
             IEnumerable<Phone> phonesPerPages = _phones.Skip((page - 1) * PageSize).Take(PageSize);
