@@ -1,0 +1,79 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    ViewBag.Title = "Search results";
+}
+
+@model BookStore.Models.SearchResultsViewModel
+
+<h2>Search results</h2>
+
+<p>Found in books:</p>
+<div class="form-group">
+    <table class="table table-hover table-bordered table-responsive">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Author</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model.Books)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Author</td>
+                <td>@item.Price</td>
+            </tr>
+        }
+        </tbody>
+    </table>   
+</div>
+
+<p>Found in players:</p>
+<div class="form-group">
+    <table class="table table-hover table-bordered table-responsive">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Position</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model.Players)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Age</td>
+                <td>@item.Position</td>
+            </tr>
+        }
+        </tbody>
+    </table>   
+</div>
+
+<p>Found in students:</p>
+<div class="form-group">
+    <table class="table table-hover table-bordered table-responsive">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Surname</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Students)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Surname</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<p>@Html.ActionLink("Back", "Index", "Home", null, null)</p>

@@ -240,6 +240,7 @@
     <Compile Include="Models\Player.cs" />
     <Compile Include="Models\PlayersListViewModel.cs" />
     <Compile Include="Models\Purchase.cs" />
+    <Compile Include="Models\SearchResultsViewModel.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\Team.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -367,7 +368,7 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Search\Search.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

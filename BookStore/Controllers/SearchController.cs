@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using BookStore.Models;
 using Microsoft.Azure.Search;
@@ -22,17 +24,27 @@ namespace BookStore.Controllers
             studentsSearchIndexClient = new SearchIndexClient(searchServiceName, "students", credentials);
         }
 
-        public ActionResult Search(string text)
+        [HttpPost]
+        public ActionResult Index(string textToFind)
         {
             SearchParameters parameters;
-            DocumentSearchResult<Book> results;
+            DocumentSearchResult<Book> booksResult;
+            DocumentSearchResult<Player> playersResult;
+            DocumentSearchResult<Student> studentsResult;
 
-            parameters = new SearchParameters();
+            parameters = new SearchParameters { Top = 5 };
 
-            results = booksSearchIndexClient.Documents.Search<Book>("Толстой", parameters);
+            booksResult = booksSearchIndexClient.Documents.Search<Book>(textToFind, parameters);
+            playersResult = playersSearchIndexClient.Documents.Search<Player>(textToFind, parameters);
+            studentsResult = studentsSearchIndexClient.Documents.Search<Student>(textToFind, parameters);
 
+            var books = booksResult.Results.Select(r => r.Document).ToList();
+            var players = playersResult.Results.Select(r => r.Document).ToList();
+            var students = studentsResult.Results.Select(r => r.Document).ToList();
 
-            return View();
+            var data = new SearchResultsViewModel { Books = books, Players = players, Students = students };
+            
+            return View(data);
         }
     }
 }
