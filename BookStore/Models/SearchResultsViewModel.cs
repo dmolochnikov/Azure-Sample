@@ -9,5 +9,7 @@ namespace BookStore.Models
         public List<Student> Students { get; set; }
 
         public List<Player> Players { get; set; }
+
+        public int TotalItems { get; set; }
     }
 }
